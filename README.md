@@ -1,5 +1,5 @@
 # ML-Models-from-Scratch-and-Apps
-create ML models from scratch for better understanding and to empower the understanding of machine learning domain. 
+create ML models from scratch for better understanding and to empower the knowledge of machine learning domain. 
 
 ## build 10 popular ML models:
 1. KNN (classification - clssify based on closest K points + Regression - Get the average)
