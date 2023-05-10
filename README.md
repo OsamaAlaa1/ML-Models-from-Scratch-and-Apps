@@ -3,7 +3,7 @@ create ML models from scratch for better understanding and to empower the knowle
 
 ## build 10 popular ML models:
 1. KNN (classification - clssify based on closest K points + Regression - Get the average)
-2. Linear Regression
+2. Linear Regression (Regression)
 3. Logistic Regression
 4. Decision Trees
 5. Random Forest

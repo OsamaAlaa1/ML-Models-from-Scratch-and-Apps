@@ -36,11 +36,9 @@ class KNN:
         # get the closest K
         k_indeces = np.argsort(distances)[:self.K]
         k_nearest_label = [self.y_train[i] for i in k_indeces ]
-        
 
-        
-        # get the most common label: return list of tuple [(1-> label,2-> frequency)]
-        return Counter(k_nearest_label).most_common()[0][0]
-    
+        # return the average between 3 values 
+        return np.average(k_nearest_label)
+
 
 

@@ -3,6 +3,7 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier as KNN_buildin
 from KNN import KNN,np
+
 # load iris dataset
 iris = datasets.load_iris()
 X,y = iris.data, iris.target
@@ -18,7 +19,7 @@ from timeit import default_timer as timer
 start = timer()
 
 # define the classifer with K= 5 
-clf = KNN(5)
+clf = KNN(3)
 
 # fit the data 
 clf.fit(X_train,y_train)
@@ -40,7 +41,7 @@ print (f"KNN from scratch MOdel toke: {scratch_time}")
 start = timer()
 
 # define the classifer with K = 5 
-clf = KNN_buildin(5)
+clf = KNN_buildin(3)
 
 # fit the data 
 clf.fit(X_train,y_train)

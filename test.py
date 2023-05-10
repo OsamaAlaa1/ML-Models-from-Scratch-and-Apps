@@ -1,6 +1,4 @@
-import numpy as np
-a = [1,2,3,4]
-b = [2,4,5,2]
-
-print (np.sum(np.array(a)-np.array(b)))
-
+if isinstance(5, int):
+    print("The number is an integer.")
+else:
+    print("The number is not an integer.")
