@@ -60,7 +60,7 @@ from timeit import default_timer as timer
 
 start = timer()
 
-# define the classifer with K = 5 
+# define the classifer with K= 5 
 clf = KNN(5)
 
 # fit the data 
