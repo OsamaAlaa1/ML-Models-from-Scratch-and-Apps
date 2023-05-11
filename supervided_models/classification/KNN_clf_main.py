@@ -57,7 +57,7 @@ stop = timer()
 
 # print the time taken by Bulid in KNN model
 buildin_time = round((stop - start),4)
-print (f"KNN from scratch MOdel toke: {buildin_time}")
+print (f"KNN from scratch model toke: {buildin_time}")
 
 
 # compare between Scratch-KNN and Buildin 
