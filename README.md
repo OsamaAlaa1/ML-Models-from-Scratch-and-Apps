@@ -14,5 +14,5 @@ create ML models from scratch for better understanding and to empower the knowle
 8. SVM
 
 ### B. Unsupervided Models (Clustering and Dimensionality Reduction)
-1. KMeans (clustering)
-2.PCA ( Dimensionality Reduction).
+1. KMeans (clustering).
+2. PCA ( Dimensionality Reduction).
