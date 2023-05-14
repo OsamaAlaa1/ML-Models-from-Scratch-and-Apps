@@ -15,4 +15,7 @@ create ML models from scratch for better understanding and to empower the knowle
 
 ### B. Unsupervided Models (Clustering and Dimensionality Reduction)
 1. KMeans (clustering).
-2. PCA ( Dimensionality Reduction).
+2. DBSCAN (Hierarchical Clustering)
+3. PCA ( Dimensionality Reduction).
+4. Kernel PCA
+5. t-Distributed Stochastic Neighbor Embedding (t-SNE)
