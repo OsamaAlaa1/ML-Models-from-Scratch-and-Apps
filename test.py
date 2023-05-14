@@ -1,4 +1,3 @@
-if isinstance(5, int):
-    print("The number is an integer.")
-else:
-    print("The number is not an integer.")
+import numpy as np
+
+print (np.zeros((5,6),dtype=np.float64))
