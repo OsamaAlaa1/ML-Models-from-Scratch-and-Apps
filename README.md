@@ -1,14 +1,18 @@
 # ML-Models-from-Scratch-and-Apps
 create ML models from scratch for better understanding and to empower the knowledge of machine learning domain. 
 
-## build 10 popular ML models:
-1. KNN (classification - clssify based on closest K points + Regression - Get the average).
-2. Linear Regression (Regression).
-3. Logistic Regression
-4. Decision Trees
-5. Random Forest
-6. Naive Bayes
-7. PCA
-8. Perceptron
-9. SVM
-10. KMeans
+## build popular ML models supervised and un supervised:
+
+### 1. Supervided Models (Classification and Regression):
+A. KNN (classification - clssify based on closest K points + Regression - Get the average).
+B. Linear Regression (Regression).
+C. Logistic Regression (Classifiction - 2 Classes).
+D. Decision Trees
+E. Random Forest
+F. Naive Bayes
+G. Perceptron
+H. SVM
+
+### 2. Unsupervided Models (Clustering and Dimensionality Reduction)
+A. KMeans (clustering)
+B.PCA ( Dimensionality Reduction).
