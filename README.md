@@ -19,3 +19,8 @@ create ML models from scratch for better understanding and to empower the knowle
 3. PCA ( Dimensionality Reduction).
 4. Kernel PCA
 5. t-Distributed Stochastic Neighbor Embedding (t-SNE)
+
+### C. Anomaly Detection
+Isolation Forest
+### D. Association Rule Learning
+Apriori
