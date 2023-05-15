@@ -1,64 +1,84 @@
 import numpy as np
 
-class KMeans:
-    def __init__(self, k, max_iterations=100):
-        self.k = k
-        self.max_iterations = max_iterations
-        self.centroids = None
 
-    def fit(self, data):
-        # Randomly initialize K centroids
-        self.centroids = data[np.random.choice(range(len(data)), self.k, replace=False)]
+def unit_step_func(x):
+    return np.where(x > 0 , 1, 0)
 
-        for _ in range(self.max_iterations):
-            # Assign data points to the nearest centroid
-            labels = self._assign_labels(data)
+class Perceptron:
 
-            # Update centroids
-            new_centroids = self._update_centroids(data, labels)
-
-            # Check convergence
-            if np.all(self.centroids == new_centroids):
-                break
-
-            self.centroids = new_centroids
-
-        return labels, self.centroids
-
-    def _assign_labels(self, data):
-        # Calculate Euclidean distance between data points and centroids
-        distances = np.sqrt(((data - self.centroids[:, np.newaxis])**2).sum(axis=2))
-
-        # Assign labels based on the nearest centroid
-        labels = np.argmin(distances, axis=0)
-
-        return labels
-
-    def _update_centroids(self, data, labels):
-        centroids = []
-        for i in range(self.k):
-            # Calculate mean of data points assigned to the cluster
-            cluster_points = data[labels == i]
-            centroid = np.mean(cluster_points, axis=0)
-            centroids.append(centroid)
-
-        return np.array(centroids)
+    def __init__(self, learning_rate=0.01, n_iters=1000):
+        self.lr = learning_rate
+        self.n_iters = n_iters
+        self.activation_func = unit_step_func
+        self.weights = None
+        self.bias = None
 
 
-# Example usage
-from sklearn.datasets import make_blobs
+    def fit(self, X, y):
+        n_samples, n_features = X.shape
 
-X, y = make_blobs(
-    centers=3, n_samples=500, n_features=2, shuffle=True, random_state=40
-)
-print(X.shape)
+        # init parameters
+        self.weights = np.zeros(n_features)
+        self.bias = 0
 
-clusters = len(np.unique(y))
-print(clusters)
+        y_ = np.where(y > 0 , 1, 0)
 
-kmeans = KMeans(k=clusters, max_iterations=150)
+        # learn weights
+        for _ in range(self.n_iters):
+            for idx, x_i in enumerate(X):
+                linear_output = np.dot(x_i, self.weights) + self.bias
+                y_predicted = self.activation_func(linear_output)
 
-labels, centroids = kmeans.fit(X)
+                # Perceptron update rule
+                update = self.lr * (y_[idx] - y_predicted)
+                self.weights += update * x_i
+                self.bias += update
 
-print("Cluster Labels:", labels)
-print("Cluster Centroids:", centroids)
+
+    def predict(self, X):
+        linear_output = np.dot(X, self.weights) + self.bias
+        y_predicted = self.activation_func(linear_output)
+        return y_predicted
+
+
+# Testing
+if __name__ == "__main__":
+    # Imports
+    import matplotlib.pyplot as plt
+    from sklearn.model_selection import train_test_split
+    from sklearn import datasets
+
+    def accuracy(y_true, y_pred):
+        accuracy = np.sum(y_true == y_pred) / len(y_true)
+        return accuracy
+
+    X, y = datasets.make_blobs(
+        n_samples=150, n_features=2, centers=2, cluster_std=1.05, random_state=2
+    )
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=123
+    )
+
+    p = Perceptron(learning_rate=0.01, n_iters=1000)
+    p.fit(X_train, y_train)
+    predictions = p.predict(X_test)
+
+    print("Perceptron classification accuracy", accuracy(y_test, predictions))
+
+    fig = plt.figure()
+    ax = fig.add_subplot(1, 1, 1)
+    plt.scatter(X_train[:, 0], X_train[:, 1], marker="o", c=y_train)
+
+    x0_1 = np.amin(X_train[:, 0])
+    x0_2 = np.amax(X_train[:, 0])
+
+    x1_1 = (-p.weights[0] * x0_1 - p.bias) / p.weights[1]
+    x1_2 = (-p.weights[0] * x0_2 - p.bias) / p.weights[1]
+
+    ax.plot([x0_1, x0_2], [x1_1, x1_2], "k")
+
+    ymin = np.amin(X_train[:, 1])
+    ymax = np.amax(X_train[:, 1])
+    ax.set_ylim([ymin - 3, ymax + 3])
+
+    plt.show()

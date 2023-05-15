@@ -1,13 +1,9 @@
-import numpy as np 
-data = np.array([[3,4],[1,2],[4,5]])
+import numpy as np
+# Define the size of the weights array
+input_size = 10
+output_size = 5
 
-centroids = data[np.random.choice(range(data.shape[0]),2,replace=False)]
+# Initialize weights with random values
+weights = np.random.rand()
 
-distances = np.sqrt(((data - centroids[:, np.newaxis])**2).sum(axis=2))
-print(distances)
-labels = np.argmin(distances,axis=0)
-print (labels)
-
-x = data[labels==0]
-
-print (np.mean(x , axis = 0))
+print(weights)
