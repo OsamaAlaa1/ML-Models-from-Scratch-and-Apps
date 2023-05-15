@@ -1,7 +1,7 @@
 # ML-Models-from-Scratch-and-Apps
 create ML models from scratch for better understanding and to empower the knowledge of machine learning domain. 
 
-## build popular ML models supervised and un supervised:
+## build popular ML models supervised and unsupervised:
 
 ### A. Supervided Models (Classification and Regression):
 1. KNN (classification - clssify based on closest K points + Regression - Get the average).
