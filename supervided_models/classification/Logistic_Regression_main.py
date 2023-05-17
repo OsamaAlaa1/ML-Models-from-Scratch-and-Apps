@@ -19,7 +19,7 @@ stop = timer()
 
 # calc the accuracy
 accuracy = np.sum(predictions == y_test) / len(y_test)
-print (f"Buildin Logistic Regression Accuracy: {round(accuracy,2)}")
+print (f"Scratch Logistic Regression Accuracy: {round(accuracy,2)}")
 # print the time taken by Bulid in Logistic Regression model
 scratch_time = round((stop - start),4)
 print (f"Logistic Regression from scratch model toke: {scratch_time}")
